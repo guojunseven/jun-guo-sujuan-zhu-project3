@@ -1,0 +1,14 @@
+.favoritepage {
+    height: 100%;
+    padding-bottom: 10vh;
+    background: lightgray;
+}
+
+.group-list {
+    width: 60%;
+    margin: auto;
+}
+
+.job-group {
+    padding: 0;
+}

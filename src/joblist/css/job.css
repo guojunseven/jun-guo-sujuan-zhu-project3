@@ -1,0 +1,9 @@
+.jobCard {
+    width: 100%;
+    border: thick double #32a1ce;
+
+}
+
+.jobCard:hover{
+    cursor: pointer;
+}

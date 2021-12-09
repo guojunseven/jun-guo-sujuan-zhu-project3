@@ -1,0 +1,14 @@
+.inputpage {
+    height: 100%;
+    background: lightskyblue;
+}
+
+.input-content {
+    width: 60%;
+    margin: auto;
+}
+
+.group {
+    background-color: lightsteelblue;
+    border: thick ridge #6d6875;
+}

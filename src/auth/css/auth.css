@@ -1,0 +1,10 @@
+.authpage {
+    height: 100%;
+    padding-bottom: 50vh;
+    background: green;
+}
+
+.auth-content {
+    width: 60%;
+    margin: auto;
+}
