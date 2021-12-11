@@ -18,12 +18,12 @@ export default function Job() {
     const [loginState, setLogin] = useState(loginStateParam.Undefined); // store the login state
 
     if (loginState === loginStateParam.Undefined) { 
-        axios.get('/api/user/loggedIn').then(res => { // check the login state with back server
+        const config = {headers: {'Content-Type': 'application/json','Cache-Control' : 'no-cache'}};
+        axios.get('/api/user/loggedIn', config).then(res => { // check the login state with back server
             setLogin(loginStateParam.LoggedIn);
             setUser(res.data.username);
         }).catch((err) => setLogin(loginStateParam.LoggedOut))
         // set cache control -> no cache to always make a request
-        const config = {headers: {'Content-Type': 'application/json','Cache-Control' : 'no-cache'}};
         axios.get('/api/job/isOwner/' + props.id, config).then(res => {
             const newState = {isFavorite: res.data.isFavorite, 
                               isOwner: res.data.isOwner, 
