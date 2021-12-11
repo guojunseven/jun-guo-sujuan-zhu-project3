@@ -15,7 +15,7 @@ export default function Home() {
     const [title, setTitle] = useState('');
     const [user, setUser] = useState('');
     const[alert, setAlert] = useState({msg: '', type: 'warning'});
-
+    console.log(loginState);
     if (loginState === loginStateParam.Undefined) { 
         
         axios.get('/api/user/loggedIn', config).then(res => { // check the login state with back server
