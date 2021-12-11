@@ -1,7 +1,7 @@
-const mongoose = require("mongoose")
-const UserSchema= require('../schemas/userSchema').UserSchema
+const mongoose = require("mongoose");
+const UserSchema = require('../schemas/userSchema').UserSchema;
 
-const UserModel = mongoose.model("User", UserSchema);
+const UserModel = mongoose.model("Users", UserSchema);
 
 function insertUser(user) {
     return UserModel.create(user);

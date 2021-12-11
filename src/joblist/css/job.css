@@ -1,9 +1,34 @@
 .jobCard {
     width: 100%;
     border: thick double #32a1ce;
+    font-family: jobTitle;
+    background-color: #fffcf2;
+    border-radius: 15px;
+    
+}
 
+.job-title {
+    font-weight: bolder;
 }
 
 .jobCard:hover{
     cursor: pointer;
+}
+
+.arrow {
+    padding-left: 5%;
+    padding-right: 3%;
+    color: #2176ff;
+}
+
+.company {
+    padding-left: 5%;
+    padding-right: 3%;
+    color: #78290f;
+}
+
+.location {
+    padding-left: 5%;
+    padding-right: 2%;
+    color: #f25c54;
 }

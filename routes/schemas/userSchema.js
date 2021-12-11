@@ -1,4 +1,5 @@
 const Schema = require('mongoose').Schema;
+const bcrypt = require('bcryptjs');
 
 exports.UserSchema = new Schema({
     name: {

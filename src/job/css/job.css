@@ -1,18 +1,74 @@
 .jobpage {
     height: 100%;
-    background: lightskyblue;
+    padding-bottom: 20vh;
+    background: lightgray;
+    font-family: jobTitle;
 }
 
 .job-content {
-    width: 60%;
-    background-color: lightslategray;
+    width: 50%;
+    background-color: #8e9aaf;
     margin: auto;
+    border: solid 3px #6c6466;
+    border-radius: 10px;
+    padding: 20px;
 }
 
-.fas {
+.key-word {
+    font-weight: 800;
+    font-size: x-large;
+}
+
+.content-part {
+    margin-bottom: 20px;
+}
+
+.favorite-button {
+    margin-left: 10px;
     color: red;
+}
+
+.job-button {
+    border-radius: 5px;
+    font-size: small;
+    height: 60px;
+    flex-grow: 1.2;
+}
+
+.button-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 5px;  
+}
+
+.dropdown {
+    padding-bottom: 10px;
 }
 
 i:hover {
     cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+    .job-content {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .job-content {
+        width: 90%;
+    }
+    .key-word {
+        font-size: small;
+    }
+    .job-title-detail {
+        font-size: large;
+        margin-left: -30px;
+    }
+    .jobpage {
+        font-size: x-small;
+    }
 }

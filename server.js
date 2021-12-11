@@ -9,8 +9,7 @@ const env = require('dotenv');
 
 env.config();
 // mongondb set up
-// const mongoEndpoint = 'mongodb://127.0.0.1:27017/jobBoard';
-const mongoEndpoint = 'mongodb+srv://junguo:201048502@cs5610web.yghhj.mongodb.net/jobBoardTest?retryWrites=true&w=majority';
+const mongoEndpoint = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/jobBoard';
 mongoose.connect(mongoEndpoint, {useNewUrlParser: true}).then(() => console.log('MongoDB connected...'))
 .catch(err => console.log(err));
 

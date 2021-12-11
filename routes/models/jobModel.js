@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const JobSchema = require('../schemas/jobSchema').JobSchema
 
 const JobModel = mongoose.model("Job", JobSchema);

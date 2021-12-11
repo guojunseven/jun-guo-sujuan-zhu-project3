@@ -1,14 +1,48 @@
 .favoritepage {
     height: 100%;
-    padding-bottom: 10vh;
+    padding-bottom: 20vh;
     background: lightgray;
 }
 
 .group-list {
-    width: 60%;
+    width: 40%;
     margin: auto;
 }
 
-.job-group {
-    padding: 0;
+.search-title {
+    margin-bottom: 0;
 }
+
+.job-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    gap:10px;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.group-name {
+    font-family: jobTitle;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+@media screen and (max-width: 1080px) {
+
+    .group-list {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .search-title {
+        font-size: large;
+    }
+    .group-list {
+        width: 90%;
+    }
+}
+

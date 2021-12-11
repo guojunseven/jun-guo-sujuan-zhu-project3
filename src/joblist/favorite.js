@@ -12,11 +12,13 @@ export default function Favorite() {
     const navigate = useNavigate();
     const [loginState, setLogin] = useState(loginStateParam.Undefined); // store the login state
     const [jobs, setData] = useState();
+    const [user, setUser] = useState('');
     const[alert, setAlert] = useState({msg: '', type: 'warning'});
 
     if (loginState === loginStateParam.Undefined) { 
         axios.get('/api/user/loggedIn').then(res => { // check the login state with back server
             setLogin(loginStateParam.LoggedIn);
+            setUser(res.data.username);
         }).catch((err) => setLogin(loginStateParam.LoggedOut))
         // set cache control -> no cache to always make a request
         const config = {headers: {'Content-Type': 'application/json','Cache-Control' : 'no-cache'}};
@@ -32,15 +34,16 @@ export default function Favorite() {
     }
 
     const logout = () => { // logout api request
-        axios.post('/api/user/logout').then(res => setLogin(loginStateParam.LoggedOut)
+        axios.post('/api/user/logout').then(res => navigate('/login')
         ).catch(err => console.log(err));
     };
     
     const content = constructJobLists(jobs);
     return (
         <div className='favoritepage'>
-            <NavBar loginstate={loginState} logout={logout} />
-            <h1>Your favorite jobs</h1>
+            <NavBar loginstate={loginState} logout={logout} username={user}/>
+            <h1 class='search-title'>{user}'s favorite jobs</h1>
+            <hr></hr>
             <Alert msg={alert.msg} type={alert.type} setAlert={setAlert}/>
             {content}
         </div>

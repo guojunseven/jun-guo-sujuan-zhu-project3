@@ -10,8 +10,9 @@ import JobEdit from './job/jobEdit';
 import Register from './auth/register';
 import Login from './auth/login';
 import reducer from './reducer/reducer';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import './css/index.css';
 
 const store = createStore(reducer);
 

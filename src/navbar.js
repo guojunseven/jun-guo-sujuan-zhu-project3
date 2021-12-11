@@ -1,5 +1,6 @@
-import { Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
+import { Navbar, Container, Nav, ButtonGroup, Dropdown, DropdownButton} from 'react-bootstrap';
 import loginStateParam from './param';
+import './css/navbar.css';
 
 export default function NavBar(props) {
 
@@ -10,6 +11,7 @@ export default function NavBar(props) {
     let registerComponent = <Nav.Link href="/register">Sign Up</Nav.Link>
     let logoutComponent = null;
     let postComponent = null;
+    let userComponent = null;
 
     // determine the buttons based on login state
     if (loginState === loginStateParam.LoggedIn) {
@@ -18,29 +20,28 @@ export default function NavBar(props) {
         registerComponent = null;
         postComponent = <Nav.Link href="/create">Post a Job</Nav.Link>;
         logoutComponent = <Nav.Link onClick={props.logout}>Log Out</Nav.Link>;
+        userComponent = <DropdownButton title={props.username} id="bg-nested-dropdown">
+                            <Dropdown.Item eventKey="1">Setting</Dropdown.Item>
+                        </DropdownButton>
     }
 
     return (
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="/home">meetOffer</Navbar.Brand>
+                <Navbar.Brand href="/home" className='brand'>meetOffer</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link href="/home">Home</Nav.Link>
+                    <Nav.Link href="/home" className='nav-link'>Home</Nav.Link>
                     {favoriteComponent}
                     {postComponent}
-                    {logoutComponent}
-                    {loginComponent}
-                    {registerComponent}
-                    {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                    </NavDropdown> */}
                 </Nav>
+                <ButtonGroup className='userGroup'>
+                        {loginComponent}
+                        {registerComponent}
+                        {logoutComponent}
+                        {userComponent}
+                </ButtonGroup>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

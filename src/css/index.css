@@ -1,0 +1,21 @@
+h1 {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    font-family: title;
+}
+
+@font-face {
+    font-family: title;
+    src: url(../fonts/Fuzzy_Bubbles/FuzzyBubbles-Bold.ttf);
+}
+
+@font-face {
+    font-family: brand;
+    src: url(../fonts/Smooch/Smooch-Regular.ttf);
+}
+
+@font-face {
+    font-family: jobTitle;
+    src: url(../fonts/Kanit/Kanit-Light.ttf);
+}
+

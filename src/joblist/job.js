@@ -14,21 +14,15 @@ export default function Job(props) {
 
     return (
         <div className='jobCard' onClick={click}>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div>
-                                <h2>{title}</h2>
-                            </div>
-                            <span>{company}</span>
-                            <div>
-                                {location}
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <div>
+                <h3 className='job-title'><i className="fas fa-chevron-right arrow"></i>{title}</h3>
+            </div>
+            <span><h4><i class="far fa-building company"></i>{company}</h4></span>
+            <div>
+                <h4><i class="fas fa-map-marked-alt location"></i>{location}</h4>
+            </div>
+                      
         </div>
     )
 }

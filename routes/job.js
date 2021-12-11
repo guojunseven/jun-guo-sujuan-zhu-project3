@@ -135,7 +135,6 @@ function addStatus(jobs, favorites) {
     };
     const idToStatus = {};
     for (let favorite of favorites) {
-       
         idToStatus[favorite.jobId] = favorite.status;
     }
     for (let job of jobs) {

@@ -1,14 +1,37 @@
 .inputpage {
     height: 100%;
     background: lightskyblue;
+    padding-bottom  : 10vh;
 }
 
 .input-content {
-    width: 60%;
+    width: 50%;
+    margin: auto;
+}
+
+.input-button {
+    width: 100%;
     margin: auto;
 }
 
 .group {
     background-color: lightsteelblue;
-    border: thick ridge #6d6875;
+    border: thick ridge #6c6466;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+@media screen and (max-width: 1200px) {
+    .input-content {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .input-content {
+        width: 90%;
+    }
+    .input-title {
+        font-size: x-large;
+    }
 }

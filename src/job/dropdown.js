@@ -4,7 +4,7 @@ import { Dropdown, Button } from 'react-bootstrap';
 
 export default function DropDownStauts(props) {
     
-    const jobId = props.id;
+    const jobId = props.jobId;
     const setState = props.setState;
 
     const setSelect = (newStatus) => {
@@ -15,8 +15,8 @@ export default function DropDownStauts(props) {
 
     return (
         <Dropdown onSelect={setSelect}>
-            <Button variant="success">{props.status}</Button>
-            <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+            <Button size='lg' className='job-button' variant="success">{props.status}</Button>
+            <Dropdown.Toggle split className='job-button' variant="success" id="dropdown-split-basic" />
             <Dropdown.Menu>
                 <Dropdown.Item eventKey='Not Started'>Not Started</Dropdown.Item>
                 <Dropdown.Item eventKey='Applied'>Applied</Dropdown.Item>

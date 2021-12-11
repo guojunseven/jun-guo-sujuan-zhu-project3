@@ -49,7 +49,7 @@ router.post('/login', function(req, res) {
 
 //check if the user is logged in
 router.get('/loggedIn', auth, function(req, res) {
-    return res.sendStatus(200);
+    return res.status(200).send({username: req.username});
 })
 
 //log out the user (authentication is required)

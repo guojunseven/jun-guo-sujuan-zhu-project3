@@ -12,7 +12,7 @@ export default function JobGroup(props) {
     }
     return (
         <ListGroup>
-            <ListGroup.Item variant={props.type}>{props.groupName}</ListGroup.Item>
+            <ListGroup.Item variant={props.type} className='group-name'>{props.groupName}</ListGroup.Item>
             <ListGroup.Item className='job-group'><div className="job-list">{jobList}</div></ListGroup.Item>
         </ListGroup>
     )

@@ -12,11 +12,13 @@ export default function Home() {
     const navigate = useNavigate();
     const [loginState, setLogin] = useState(loginStateParam.Undefined); // store the login state
     const [title, setTitle] = useState('');
+    const [user, setUser] = useState('');
     const[alert, setAlert] = useState({msg: '', type: 'warning'});
 
     if (loginState === loginStateParam.Undefined) { 
         axios.get('/api/user/loggedIn').then(res => { // check the login state with back server
             setLogin(loginStateParam.LoggedIn);
+            setUser(res.data.username);
         }).catch((err) => setLogin(loginStateParam.LoggedOut))
     }
  
@@ -35,13 +37,13 @@ export default function Home() {
 
     return (
         <div className="homepage">
-            <NavBar loginstate={loginState} logout={logout} />
+            <NavBar loginstate={loginState} logout={logout} username={user}/>
             <Alert msg={alert.msg} type={alert.type} setAlert={setAlert}/>
             <div className="main">
-                <h1>Meet Your Offers</h1>
+                <h1 className='home-title'>Meet Your Offers</h1>
                 <Form className='form'>
                     <Form.Group className="mb-3" id='input' controlId="formBasicEmail">
-                        <Form.Control type="text" id='search' placeholder="Search job title" value={title}
+                        <Form.Control type="text" id='search' placeholder="Search jobs" value={title}
                         onChange={e => setTitle(e.target.value)}/>
                     </Form.Group>
                     <Button variant="primary" className='button' onClick={search}>

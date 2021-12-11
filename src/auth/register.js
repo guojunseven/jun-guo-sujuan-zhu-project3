@@ -1,9 +1,9 @@
 import NavBar from '../navbar';
 import axios from 'axios';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Form, Button} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import loginStateParam from '../param';
 import Alert from '../alert';
 
 export default function Register() {
@@ -12,10 +12,19 @@ export default function Register() {
 
     const[userData, setUserData] = useState({name: '', password: '', match: ''})
     const[alert, setAlert] = useState({msg: '', type: 'danger'});
+    const [loginState, setLogin] = useState(loginStateParam.Undefined); // store the login state
+    const [user, setUser] = useState('');
+
+    if (loginState === loginStateParam.Undefined) { 
+        axios.get('/api/user/loggedIn').then(res => { // check the login state with back server
+            setLogin(loginStateParam.LoggedIn);
+            setUser(res.data.username);
+        }).catch((err) => setLogin(loginStateParam.LoggedOut))
+    }
 
     function register() { // register logic and api request
         if (userData.password !== userData.match) {
-            setAlert("Passwords don't match. Please try again !");
+            setAlert({msg: "Passwords don't match. Please try again !", type:"warning"});
             return;
         }
         axios.post("/api/user/register", userData)
@@ -25,13 +34,18 @@ export default function Register() {
         .catch((err) => setAlert({type: 'danger', msg: err.response.data}));
     }
 
+    const logout = () => { // logout api request
+        axios.post('/api/user/logout').then(res => setLogin(loginStateParam.LoggedOut)
+        ).catch(err => console.log(err));
+    };
+
     return (
         <div className='authpage'>
-            <NavBar />
-            <div className='auth-content'>
+             <NavBar loginstate={loginState} logout={logout} username={user}/>
+             <Alert msg={alert.msg} setAlert={setAlert} type={alert.type}/>
             <h1>Sign Up</h1>
+            <div className='auth-content'>
             <Form>
-                <Alert msg={alert.msg} setAlert={setAlert} type={alert.type}/>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Username</Form.Label>
                     <Form.Control type="text" placeholder="Username must be unique" value={userData.username}
@@ -49,7 +63,7 @@ export default function Register() {
                     <Form.Control type="password" placeholder="passwords must match" value={userData.match}
                     onChange={e => setUserData({...userData, match: e.target.value})}/>
                 </Form.Group>
-                <Button variant="primary" onClick={register}>
+                <Button variant="primary" className='auth-button' onClick={register}>
                     Sign Up
                 </Button>
             </Form>
