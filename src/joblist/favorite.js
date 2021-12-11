@@ -4,6 +4,7 @@ import NavBar from '../navbar';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import loginStateParam from '../param';
+import config from '../param';
 import axios from 'axios';
 import './css/favorite.css';
 
@@ -16,13 +17,12 @@ export default function Favorite() {
     const[alert, setAlert] = useState({msg: '', type: 'warning'});
 
     if (loginState === loginStateParam.Undefined) { 
-        axios.get('/api/user/loggedIn').then(res => { // check the login state with back server
+        axios.get('/api/user/loggedIn', config).then(res => { // check the login state with back server
             setLogin(loginStateParam.LoggedIn);
             setUser(res.data.username);
         }).catch((err) => setLogin(loginStateParam.LoggedOut))
         // set cache control -> no cache to always make a request
-        const config = {headers: {'Content-Type': 'application/json','Cache-Control' : 'no-cache'}};
-        axios.get('/api/job/getFavorites').then(res => {
+        axios.get('/api/job/getFavorites', config).then(res => {
             if (! checkFavorites(res.data)) {
                 setAlert({type: 'info', msg: "Opps! No Results. Try to add some jobs!"});
             } else {

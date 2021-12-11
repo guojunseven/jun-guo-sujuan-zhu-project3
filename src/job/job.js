@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Button} from 'react-bootstrap';
 import dateFormat from 'dateformat';
 import loginStateParam from '../param';
+import config from '../param';
 import './css/job.css';
 
 export default function Job() {
@@ -18,7 +19,7 @@ export default function Job() {
     const [loginState, setLogin] = useState(loginStateParam.Undefined); // store the login state
 
     if (loginState === loginStateParam.Undefined) { 
-        const config = {headers: {'Content-Type': 'application/json','Cache-Control' : 'no-cache'}};
+        
         axios.get('/api/user/loggedIn', config).then(res => { // check the login state with back server
             setLogin(loginStateParam.LoggedIn);
             setUser(res.data.username);

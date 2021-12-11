@@ -5,6 +5,7 @@ import { Button, Form} from 'react-bootstrap';
 import { useState } from 'react';
 import { useNavigate } from "react-router";
 import loginStateParam from './param';
+import config from '../param';
 import './css/home.css';
 
 export default function Home() {
@@ -16,7 +17,8 @@ export default function Home() {
     const[alert, setAlert] = useState({msg: '', type: 'warning'});
 
     if (loginState === loginStateParam.Undefined) { 
-        axios.get('/api/user/loggedIn').then(res => { // check the login state with back server
+        
+        axios.get('/api/user/loggedIn', config).then(res => { // check the login state with back server
             setLogin(loginStateParam.LoggedIn);
             setUser(res.data.username);
         }).catch((err) => setLogin(loginStateParam.LoggedOut))

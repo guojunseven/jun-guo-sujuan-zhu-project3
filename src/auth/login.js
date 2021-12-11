@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import loginStateParam from '../param';
+import config from '../param';
 import Alert from '../alert';
 import './css/auth.css';
 
@@ -16,7 +17,7 @@ export default function Login() {
     const [user, setUser] = useState('');
 
     if (loginState === loginStateParam.Undefined) { 
-        axios.get('/api/user/loggedIn').then(res => { // check the login state with back server
+        axios.get('/api/user/loggedIn', config).then(res => { // check the login state with back server
             setLogin(loginStateParam.LoggedIn);
             setUser(res.data.username);
         }).catch((err) => setLogin(loginStateParam.LoggedOut))

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import loginStateParam from '../param';
+import config from '../param';
 import './css/search.css';
 
 export default function Search(props) {
@@ -17,11 +18,11 @@ export default function Search(props) {
     const[alert, setAlert] = useState({msg: '', type: 'warning'});
 
     if (loginState === loginStateParam.Undefined) { 
-        axios.get('/api/user/loggedIn').then(res => { // check the login state with back server
+        axios.get('/api/user/loggedIn', config).then(res => { // check the login state with back server
             setLogin(loginStateParam.LoggedIn);
             setUser(res.data.username);
         }).catch((err) => setLogin(loginStateParam.LoggedOut))
-        axios.get("/api/job/search/" + title).then(res => 
+        axios.get("/api/job/search/" + title, config).then(res => 
             {
                 if (res.data.length === 0) {
                     setAlert({type: 'info', msg: "Opps! No Results. Try to add some jobs!"});

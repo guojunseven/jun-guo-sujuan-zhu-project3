@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import config from '../param';
 import './css/job.css';
 
 export default function Job(props) {
@@ -8,7 +9,7 @@ export default function Job(props) {
     const navigate = useNavigate();
 
     const click = () => {
-        axios.get('/api/job/findJobDetail/' + id).then(results => navigate('/job/' + id, {state: results.data})
+        axios.get('/api/job/findJobDetail/' + id, config).then(results => navigate('/job/' + id, {state: results.data})
         ).catch(err => console.log(err.response.data));
     }
 

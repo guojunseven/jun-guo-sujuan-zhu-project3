@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Form, Button, InputGroup } from 'react-bootstrap';
 import { Editor, OriginalTools } from 'react-bootstrap-editor';
 import loginStateParam from '../param';
+import config from '../param';
 import './css/jobInput.css';
 
 export default function JobEdit() {
@@ -19,7 +20,7 @@ export default function JobEdit() {
     const[alert, setAlert] = useState({msg: '', type: 'warning'});
 
     if (loginState === loginStateParam.Undefined) { 
-        axios.get('/api/user/loggedIn').then(res => { // check the login state with back server
+        axios.get('/api/user/loggedIn', config).then(res => { // check the login state with back server
             setLogin(loginStateParam.LoggedIn);
             setUser(res.data.username);
         }).catch(err => navigate('/login'))
