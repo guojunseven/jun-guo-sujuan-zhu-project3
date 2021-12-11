@@ -5,7 +5,7 @@ import { Button, Form} from 'react-bootstrap';
 import { useState } from 'react';
 import { useNavigate } from "react-router";
 import loginStateParam from './param';
-import config from '../param';
+import config from './param';
 import './css/home.css';
 
 export default function Home() {
