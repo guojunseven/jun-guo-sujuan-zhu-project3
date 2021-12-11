@@ -6,7 +6,7 @@ export default function NavBar(props) {
 
     const loginState = props.loginstate;
 
-    let favoriteComponent = <Nav.Link href="/login">My Favorites</Nav.Link>;
+    const favoriteComponent = <Nav.Link href="/favorite">My Favorites</Nav.Link>;
     let loginComponent = <Nav.Link href="/login">Log In</Nav.Link>;
     let registerComponent = <Nav.Link href="/register">Sign Up</Nav.Link>
     let logoutComponent = null;
@@ -15,7 +15,6 @@ export default function NavBar(props) {
 
     // determine the buttons based on login state
     if (loginState === loginStateParam.LoggedIn) {
-        favoriteComponent = <Nav.Link href="/favorite">My Favorites</Nav.Link>;
         loginComponent = null;
         registerComponent = null;
         postComponent = <Nav.Link href="/create">Post a Job</Nav.Link>;
