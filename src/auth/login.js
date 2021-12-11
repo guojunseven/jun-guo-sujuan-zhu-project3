@@ -30,7 +30,7 @@ export default function Login() {
         }
         axios.post("/api/user/login", userData)
         .then((res) => {
-            navigate(-1);
+            navigate(-1).then(() => window.location.reload());
         })
         .catch((err) => setAlert({type: 'danger', msg: err.response.data}));
     }
