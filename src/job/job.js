@@ -40,7 +40,7 @@ export default function Job() {
     
     let favoriteComponent = <i className="far fa-heart favorite-button" // unfavorite (logged out or unfavorite)
         onClick={getFavoriteFunction(props.id, 'favorite', state, setState, navigate)}></i>; 
-    let dropDownStatus = null;
+    let dropDownStatus = 'Click favorite button to track your application status';
     let EditComponent = null;
     let DeleteComponent = null;
     if (loginState === loginStateParam.LoggedIn && state.isFavorite) {
